@@ -68,10 +68,10 @@
   .mark{font-family:'Fraunces',serif; font-weight:600; font-size:1rem; color:var(--accent); letter-spacing:0.02em; text-decoration:none;}
   .mark:hover{color:#34507A; text-decoration:none;}
   .nav-right{display:flex; align-items:center; gap:clamp(10px,2.5vw,22px);}
-  nav.links{display:none; gap:18px;}
+  nav.links{display:none; gap:14px; flex-wrap:wrap; justify-content:flex-end;}
   nav.links a{font-size:0.78rem; font-weight:500; color:var(--ink-soft); text-decoration:none;}
   nav.links a:hover{color:var(--accent);}
-  @media (min-width:768px){ nav.links{display:flex;} }
+  @media (min-width:860px){ nav.links{display:flex;} }
 
   .dl-btn{
     display:inline-flex; align-items:center; gap:7px;
@@ -108,7 +108,7 @@
 
   /* ---------- SECTIONS ---------- */
   section.content{padding:clamp(26px,5.5vw,40px) 0; border-top:1px solid var(--line);}
-  .summary p{font-size:1.02rem; color:var(--ink); max-width:62ch;}
+  .summary p{font-size:1.02rem; color:var(--ink); max-width:62ch; text-align:justify; hyphens:auto;}
   .summary p + p{margin-top:14px; color:var(--ink-soft);}
 
   /* ---------- TIMELINE ---------- */
@@ -122,7 +122,7 @@
   .node-tag{font-size:0.68rem; font-weight:600; letter-spacing:0.06em; text-transform:uppercase; color:var(--accent); background:var(--accent-soft); padding:2px 8px; border-radius:20px;}
   .node-meta{font-size:0.82rem; color:var(--ink-soft); margin-bottom:10px;}
   .node ul{margin:0; padding-left:18px; color:var(--ink-soft);}
-  .node li{margin-bottom:6px; font-size:0.95rem;}
+  .node li{margin-bottom:6px; font-size:0.95rem; text-align:justify; hyphens:auto;}
   .node li::marker{color:var(--accent);}
 
   /* ---------- SKILLS ---------- */
@@ -131,6 +131,29 @@
   .skill-group .eyebrow{margin-bottom:9px; font-size:0.7rem;}
   .chips{display:flex; flex-wrap:wrap; gap:8px;}
   .chip{font-size:0.84rem; color:var(--ink); background:var(--bg-soft); padding:6px 13px; border-radius:20px;}
+
+  /* ---------- INTERESTS ---------- */
+  .interests-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(160px,1fr)); gap:14px;}
+  .interest-card{background:var(--bg-soft); border-radius:10px; padding:16px; break-inside:avoid;}
+  .interest-card h3{font-family:'Inter',sans-serif; font-weight:600; font-size:0.96rem; margin-bottom:5px;}
+  .interest-card p{font-size:0.86rem; color:var(--ink-soft); margin:0; line-height:1.5; text-align:justify; hyphens:auto;}
+
+  /* ---------- GALLERY (collage) ---------- */
+  .gallery-grid{display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:110px; gap:10px; grid-auto-flow:dense;}
+  .gallery-grid .g-item:nth-child(1){grid-column:span 2; grid-row:span 2;}
+  .gallery-grid .g-item:nth-child(3){grid-row:span 2;}
+  .gallery-grid .g-item:nth-child(5){grid-column:span 2;}
+  .g-item{position:relative; border-radius:10px; overflow:hidden;}
+  .g-item img{width:100%; height:100%; object-fit:cover;}
+  .g-fallback{
+    width:100%; height:100%; display:flex; align-items:center; justify-content:center;
+    text-align:center; padding:8px; background:var(--bg-soft); color:var(--ink-soft);
+    font-size:0.74rem; border:1px dashed var(--line); border-radius:10px;
+  }
+  @media (max-width:680px){
+    .gallery-grid{grid-template-columns:repeat(2,1fr); grid-auto-rows:120px;}
+    .gallery-grid .g-item{grid-column:span 1 !important; grid-row:span 1 !important;}
+  }
 
   /* ---------- TWO COL ---------- */
   .two-col{display:grid; grid-template-columns:1fr; gap:28px;}
@@ -186,7 +209,8 @@
 
     /* Let sections flow naturally; only keep individual entries intact */
     section.content{padding:9px 0;}
-    .node, .item, .skill-group, .contact-field{break-inside:avoid;}
+    .node, .item, .skill-group, .contact-field, .interest-card{break-inside:avoid;}
+    #interests, #gallery{display:none !important;}
 
     .hero{padding:0 0 10px;}
     .hero-top{flex-direction:row !important; align-items:center !important; gap:14px;}
@@ -234,6 +258,8 @@
         <a href="#experience">Experience</a>
         <a href="#skills">Skills</a>
         <a href="#education">Education</a>
+        <a href="#interests">Interests</a>
+        <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
       </nav>
       <button class="dl-btn" onclick="window.print()" aria-label="Download CV as PDF">
@@ -282,7 +308,7 @@
   </section>
 
   <section id="experience" class="content">
-    <div class="eyebrow">Experience</div>
+    <div class="eyebrow">Experience (8+ Years)</div>
     <div class="timeline">
 
       <div class="node active">
@@ -393,11 +419,95 @@
         <div class="item"><h3>Garrett Turbo Expertise — Level 1 &amp; Level 2</h3></div>
         <div class="item"><h3>Successful Negotiation: Essential Strategies and Skills</h3></div>
         <div class="item"><h3>Excel Skills for Business — Specialization</h3></div>
-        <div class="item"><h3>Basic Course on MWM Gas Generators</h3></div>
+        <div class="item"><h3>Crash Course on Python</h3></div>
         <div class="item">
           <h3>Languages</h3>
           <div class="meta">English (Professional) · Bengali (Native)</div>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="interests" class="content">
+    <div class="eyebrow">Things I'm Interested In</div>
+    <div class="interests-grid">
+      <div class="interest-card">
+        <h3>Photography</h3>
+        <p>Sample text — capturing landscapes and everyday moments. Replace with your own.</p>
+      </div>
+      <div class="interest-card">
+        <h3>Cricket</h3>
+        <p>Sample text — following local and international matches closely.</p>
+      </div>
+      <div class="interest-card">
+        <h3>Reading</h3>
+        <p>Sample text — nonfiction and biographies, a few chapters most nights.</p>
+      </div>
+      <div class="interest-card">
+        <h3>Traveling</h3>
+        <p>Sample text — exploring new places and cultures whenever possible.</p>
+      </div>
+      <div class="interest-card">
+        <h3>Technology</h3>
+        <p>Sample text — tinkering with side projects and new tools.</p>
+      </div>
+      <div class="interest-card">
+        <h3>Cooking</h3>
+        <p>Sample text — trying out new recipes on weekends.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="gallery" class="content">
+    <div class="eyebrow">Gallery</div>
+    <div class="gallery-grid">
+      <div class="g-item">
+        <img src="gallery-1.jpg" alt="Gallery photo 1" loading="lazy" style="display:none;"
+             onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
+             onerror="this.style.display='none';">
+        <div class="g-fallback">gallery-1.jpg</div>
+      </div>
+      <div class="g-item">
+        <img src="gallery-2.jpg" alt="Gallery photo 2" loading="lazy" style="display:none;"
+             onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
+             onerror="this.style.display='none';">
+        <div class="g-fallback">gallery-2.jpg</div>
+      </div>
+      <div class="g-item">
+        <img src="gallery-3.jpg" alt="Gallery photo 3" loading="lazy" style="display:none;"
+             onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
+             onerror="this.style.display='none';">
+        <div class="g-fallback">gallery-3.jpg</div>
+      </div>
+      <div class="g-item">
+        <img src="gallery-4.jpg" alt="Gallery photo 4" loading="lazy" style="display:none;"
+             onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
+             onerror="this.style.display='none';">
+        <div class="g-fallback">gallery-4.jpg</div>
+      </div>
+      <div class="g-item">
+        <img src="gallery-5.jpg" alt="Gallery photo 5" loading="lazy" style="display:none;"
+             onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
+             onerror="this.style.display='none';">
+        <div class="g-fallback">gallery-5.jpg</div>
+      </div>
+      <div class="g-item">
+        <img src="gallery-6.jpg" alt="Gallery photo 6" loading="lazy" style="display:none;"
+             onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
+             onerror="this.style.display='none';">
+        <div class="g-fallback">gallery-6.jpg</div>
+      </div>
+      <div class="g-item">
+        <img src="gallery-7.jpg" alt="Gallery photo 7" loading="lazy" style="display:none;"
+             onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
+             onerror="this.style.display='none';">
+        <div class="g-fallback">gallery-7.jpg</div>
+      </div>
+      <div class="g-item">
+        <img src="gallery-8.jpg" alt="Gallery photo 8" loading="lazy" style="display:none;"
+             onload="this.style.display='block'; this.nextElementSibling.style.display='none';"
+             onerror="this.style.display='none';">
+        <div class="g-fallback">gallery-8.jpg</div>
       </div>
     </div>
   </section>
