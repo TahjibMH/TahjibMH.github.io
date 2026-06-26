@@ -186,6 +186,7 @@
   /* ---------- SECTIONS ---------- */
   section.content{padding:clamp(26px,5.5vw,40px) 0; border-top:1px solid var(--line);}
   .summary p{font-size:1.02rem; color:var(--ink); max-width:62ch; text-align:justify; hyphens:auto;}
+  .print-only{display:none;}
   .summary p + p{margin-top:14px; color:var(--ink-soft);}
 
   /* ---------- TIMELINE ---------- */
@@ -305,6 +306,8 @@
 
     .summary p{font-size:10.5px; max-width:none;}
     .summary p + p{margin-top:6px;}
+    .web-only{display:none !important;}
+    .print-only{display:block !important;}
 
     .timeline .node{padding-left:18px; padding-bottom:10px;}
     .node-head h3{font-size:11.5px;}
@@ -378,13 +381,16 @@
 
   <section id="summary" class="content summary">
     <div class="eyebrow">Summary</div>
-    <p>
+    <p class="web-only">
       Engineering professional with eight years across power generation, plant operations, and industrial
       sales — currently a Key Account Manager in Kaltimex Energy Bangladesh's Product Support division,
       delivering round-the-clock after-sales support for MWM gas genset customers.
     </p>
-    <p>
+    <p class="web-only">
       Years spent on the floor of a 300MW diesel power plant and in the field alongside hundreds of industrial clients have shaped a way of working that is hard to replicate from a desk — understanding machines, reading people, and knowing exactly what it takes to keep critical power systems running. That foundation now drives everything on the commercial side: building trust with key accounts, closing deals that matter, and growing revenue with the kind of technical credibility that sales professionals without an engineering background simply cannot offer.
+    </p>
+    <p class="print-only">
+      Key Account Manager and engineering professional with 8+ years of experience spanning industrial power generation, gas genset after-sales support, renewable energy, and plant operations. Skilled at turning technical depth into commercial results — consistently exceeding revenue targets, securing high-value deals, and retaining clients through hands-on expertise, reliable after-sales commitment, and a continuous eagerness to learn and grow.
     </p>
   </section>
 
